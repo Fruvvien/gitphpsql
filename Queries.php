@@ -6,7 +6,7 @@ class Queries{
     private $db;
 
     function __construct(){
-        $this->db=new Connection;
+        $this->db=new Connection();
     }
 
     function userList(){
