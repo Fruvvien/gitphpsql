@@ -9,6 +9,11 @@ class Queries{
         $this->db=new Connection;
     }
 
-    
+    function userList(){
+        $sql=$this->db->conn->prepare("SELECT * FROM users");
+        $sql->execute();
+        $result= $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
 }
