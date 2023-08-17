@@ -34,6 +34,24 @@
         </div>
     </div>
     </nav>
+
+
+    <div class="container-fluid">
+        <?php
+            if(isset($_GET["page"])){
+                switch($_GET["page"]){
+                    case "userList":
+                        include "userList.php";
+                        break;
+                    default:
+                        include "userlist.php";
+                        break;
+                }
+                    
+            }
+
+        ?>
+    </div>
         
 </body>
 </html>
