@@ -1,17 +1,24 @@
 let registerPanel= document.getElementById("users");
 
-registerPanel.addEventListener("button", (e) => {
-
+registerPanel.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
     let username= document.getElementById("username").value;
     let email= document.getElementById("email").value;
     let password= document.getElementById("password").value;
-
-    let allDatas={
+    
+    let allDatas
+    if(username != "" && email != "" && password != ""){
+        allDatas={
         userName: username,
         email: email,
         password: password
     };
-
+    }else{
+        alert("Nem írt be adatokat");
+    }
+    
+    
     $.ajax({
         url: "Action.php",
         type: "POST",

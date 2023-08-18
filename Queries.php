@@ -17,7 +17,7 @@ class Queries{
     }
     
     function registerList($userName, $email, $password){
-        $sql= $this->db->conn->prepare("INSERT INTO users(user_name, password, email) VALUES(:userName, :email, :password)");
+        $sql= $this->db->conn->prepare("INSERT INTO users(user_name, email, password ) VALUES(:userName, :email, :password)");
         $sql->bindValue(":userName", $userName);
         $sql->bindValue(":email", $email);
         $sql->bindValue(":password", $password);
