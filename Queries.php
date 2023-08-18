@@ -15,5 +15,14 @@ class Queries{
         $result= $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    
+    function registerList($userName, $email, $password){
+        $sql= $this->db->conn->prepare("INSERT INTO users(user_name, password, email) VALUES(:userName, :email, :password)");
+        $sql->bindValue(":userName", $userName);
+        $sql->bindValue(":email", $email);
+        $sql->bindValue(":password", $password);
+        $result= $sql->execute();
+        return $result;
+    }
 
 }
