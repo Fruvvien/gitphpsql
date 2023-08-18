@@ -42,6 +42,9 @@
                     case "userList":
                         include "userList.php";
                         break;
+                    case "registration":
+                        include "register.php";
+                        break;
                     default:
                         include "userList.php";
                         break;
