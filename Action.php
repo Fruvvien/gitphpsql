@@ -12,6 +12,11 @@ if(isset($_POST["action"]) && $_POST["action"] == "register" && $_POST["allDatas
  echo ($queriesRegister= $queries->registerList($_POST["allDatasKey"]["userName"], $_POST["allDatasKey"]["email"], $_POST["allDatasKey"]["password"])) ;
 }
 
-if(isset($_POST["action"])&& $_POST["action"] == "deleteUser" && $_POST["userIdKey"]){
+if(isset($_POST["action"])&& $_POST["action"] == "deleteUser" && isset($_POST["userIdKey"])){
   echo($queriesDeleteUser = $queries->deleteUser($_POST["userIdKey"]));
+}
+
+if(isset($_POST["action"])&& $_POST["action"] == "updateList" && isset($_POST["datasKey"]) && isset($_POST["userIdKey"])){
+  $queriesUpdateUser= $queries->updateUser($_POST["datasKey"]["userName"], $_POST["datasKey"]["email"], $_POST["userIdKey"]);
+  echo json_encode($queriesUpdateUser);
 }
