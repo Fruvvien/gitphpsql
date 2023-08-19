@@ -48,6 +48,9 @@
                     case "deleteUser":
                         include "delete.php";
                         break;    
+                    case "updateUser":
+                        include "update.php";
+                        break;    
                     default:
                         include "userList.php";
                         break;
