@@ -45,6 +45,9 @@
                     case "registration":
                         include "register.php";
                         break;
+                    case "delete":
+                        include "delete.php";
+                        break;    
                     default:
                         include "userList.php";
                         break;
