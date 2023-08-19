@@ -33,5 +33,13 @@ class Queries{
         
 
     }
+    function updateUser($userName, $email, $userId){
+        $sql= $this->db->conn->prepare("UPDATE users SET user_name = :userName, email = :email WHERE id = :userId ");
+        $sql->bindValue(":userName", $userName);
+        $sql->bindValue(":email",  $email);
+        $sql->bindValue(":userId", $userId);
+        $result= $sql->execute();
+        return $result;
+    }
 
 }
