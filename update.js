@@ -16,9 +16,9 @@ function userListUpdate(){
             users.forEach(user => {
                 text+=
                 "<div class='card text-white bg-secondary mt-2 mb-2 col-4'>"+
-                "<div class='card-header'> <input type='email' class='form-control' id='email"+user.id+"' name='email' value='"+user.email+"'></div>"+
+                "<div class='card-header'> <input type='email' class='form-control' id='emails"+user.id+"' name='email' value='"+user.email+"'></div>"+
                     "<div class='card-body'>"+
-                        "<div class='card-text'> <input type='text' class='form-control' id='userName"+user.id+"' name='userName' value='"+user.user_name+"'></div>"+
+                        "<div class='card-text'> <input type='text' class='form-control' id='username"+user.id+"' name='username' value='"+user.user_name+"'></div>"+
                     "</div>"+
                 "<div class='card-footer'>"+
                     "<button class='btn btn-warning w-100' onclick='updateUser("+user.id+")'>Szerkesztés</button>"+
@@ -35,16 +35,17 @@ function userListUpdate(){
 
 }
 
-function updateUser(userId, userName, email){
+function updateUser(userId){
 
-    let userName= document.getElementById("userName").value;
-    let email= document.getElementById("email").value;
+    let userName= document.getElementById("username"+userId).value;
+    let email= document.getElementById("emails"+userId).value;
+    
 
     let datas={
         userName: userName,
         email: email
     };
-
+    
     $.ajax({
 
         url: "Action.php",
