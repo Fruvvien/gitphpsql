@@ -13,5 +13,5 @@ if(isset($_POST["action"]) && $_POST["action"] == "register" && $_POST["allDatas
 }
 
 if(isset($_POST["action"])&& $_POST["action"] == "deleteUser" && $_POST["userIdKey"]){
-  echo($queriesDeleteUser = $queries->deleteUser($_POST["userIdKey"]["id"]));
+  echo($queriesDeleteUser = $queries->deleteUser($_POST["userIdKey"]));
 }

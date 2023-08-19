@@ -1,8 +1,8 @@
 $(document).ready(function(){
-    DeleteUserList();
+    deleteUserList();
 });
     
-function DeleteUserList(){
+function deleteUserList(){
     $.ajax({
         
         url: "Action.php",
@@ -15,14 +15,14 @@ function DeleteUserList(){
             users.forEach(user => {
                 text+=
                 "<div class='card text-white bg-secondary mt-2 mb-2 col-4'>"+
-                "<div class='card-header'>"+user.email+"</div>"+
-                    "<div class='card-body'>"+
+                        "<div class='card-header'>"+user.email+"</div>"+
+                "<div class='card-body'>"+
                         "<div class='card-text'>"+user.user_name+"</div>"+
-                    "</div>"+
-                    "<div class='card-body' >"+ 
-                    "<button class='btn btn-danger w-100' onclick='deleteUser("+user.id+")> Törlés </button>"+
-                    "</div>"+
-            "</div>";
+                "</div>"+
+                "<div class='card-footer' >"+ 
+                        "<button class='btn btn-danger w-100' onclick='deleteUser("+user.id+")'>Törlés</button>"+
+                "</div>"+
+                "</div>";
             });
             document.getElementById("users").innerHTML=text;
         },
@@ -34,16 +34,14 @@ function DeleteUserList(){
 }
 
 function deleteUser(userId){
-    let id= document.getElementById(userId).value;
-
     $.ajax({
 
         url: "Action.php",
         type: "POST",
-        data: {action: "deleteUser", userIdKey: id},
+        data: {action: "deleteUser", userIdKey: userId},
 
         success: function(response){
-            DeleteUserList();
+            deleteUserList();
 
         },
         error: function (jqXhr, textStatus, errorMessage) { 

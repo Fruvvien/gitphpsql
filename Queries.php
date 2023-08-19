@@ -25,4 +25,13 @@ class Queries{
         return $result;
     }
 
+    function deleteUser($id){
+        $sql= $this->db->conn->prepare("DELETE FROM users WHERE id = :userIdKey");
+        $sql->bindValue(":userIdKey", $id);
+        $result= $sql->execute();
+        return $result;
+        
+
+    }
+
 }
