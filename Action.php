@@ -20,3 +20,12 @@ if(isset($_POST["action"])&& $_POST["action"] == "updateList" && isset($_POST["d
   $queriesUpdateUser= $queries->updateUser($_POST["datasKey"]["userName"], $_POST["datasKey"]["email"], $_POST["userIdKey"]);
   echo json_encode($queriesUpdateUser);
 }
+
+if(isset($_POST["action"]) && $_POST["action"] == "logining" && isset($_POST["usersDataKey"])){
+  $queriesLogin= $queries->loginUser($_POST["usersDataKey"]["email"], $_POST["usersDataKey"]["passw"]);
+  if(!empty($queriesLogin)){
+    echo json_encode(["success" => true, "user" => $queriesLogin]);
+  }else{
+    echo json_encode(["success" => false, "user" => $queriesLogin]);
+  }
+}

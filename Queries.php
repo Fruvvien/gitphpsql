@@ -41,5 +41,14 @@ class Queries{
         $result= $sql->execute();
         return $result;
     }
+    
+    function loginUser($email, $password){
+        $sql= $this->db->conn->prepare("SELECT * FROM users WHERE email = :email AND password = :passw ");
+        $sql->bindValue(":email", $email);
+        $sql->bindValue(":passw", $password);
+        $sql->execute();
+        $result= $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
 }
