@@ -5,6 +5,8 @@ loginEventListener.addEventListener("submit", (e) =>{
 
     let email= document.getElementById("emailAddress").value;
     let password= document.getElementById("passw").value;
+
+    
     
     let usersData= {
         email: email,
@@ -22,8 +24,9 @@ loginEventListener.addEventListener("submit", (e) =>{
             let someOneUser=JSON.parse(response);
          if(someOneUser["success"]==true){
             document.getElementById("navbar").style.display="block";
-            
+            document.getElementById("loginPanel").style.display="none";
          }else{
+            
             alert("sikertelen");
          }
         },
