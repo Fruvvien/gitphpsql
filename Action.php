@@ -1,6 +1,6 @@
 <?php
 include_once "Queries.php";
-
+session_start();
 $queries= new Queries();
 
 
@@ -24,8 +24,19 @@ if(isset($_POST["action"])&& $_POST["action"] == "updateList" && isset($_POST["d
 if(isset($_POST["action"]) && $_POST["action"] == "logining" && isset($_POST["usersDataKey"])){
   $queriesLogin= $queries->loginUser($_POST["usersDataKey"]["email"], $_POST["usersDataKey"]["passw"]);
   if(!empty($queriesLogin)){
+    if(!isset($_SESSION["userName"])){
+      $_SESSION["userName"]=$queriesLogin[0]["user_name"];
+    }
     echo json_encode(["success" => true, "user" => $queriesLogin]);
   }else{
     echo json_encode(["success" => false, "user" => $queriesLogin]);
+  }
+}
+
+if(isset($_POST["action"]) && $_POST["action"] == "sessionIsExist"){
+  if(isset($_SESSION["userName"]) && $_SESSION["userName"] != "" ){
+    echo true;
+  }else{
+    echo false;
   }
 }
